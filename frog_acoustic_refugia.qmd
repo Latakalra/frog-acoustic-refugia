@@ -11,6 +11,9 @@ format:
     fig-width: 10
     fig-height: 7
     fig-dpi: 300
+    fig-width-container: 8   # Tells Quarto to budget space better
+    out-width: "80%"         # Restricts display width to 80% of text body
+    embed-resources: true
 execute:
   warning: false
   message: false
