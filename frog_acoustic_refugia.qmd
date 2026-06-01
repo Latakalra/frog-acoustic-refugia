@@ -11,7 +11,6 @@ format:
     fig-width: 10
     fig-height: 7
     fig-dpi: 300
-    embed-resources: true
 execute:
   warning: false
   message: false
@@ -121,6 +120,10 @@ plot(noise_modeled, main = "Estimated Ambient Noise Level (dB)",
      col = viridis(50, option = "magma", direction = -1))
 dev.off()
 
+# ADD THIS LINE:
+plot(noise_modeled, main = "Estimated Ambient Noise Level (dB)",
+     col = viridis(50, option = "magma", direction = -1))
+
 
 ```
 
@@ -177,6 +180,10 @@ png("figures/03_communication_quality.png", width = 8, height = 6, units = "in",
 plot(comm_quality, main = "Communication Quality Index\n(1 = quiet, 0 = too noisy)",
      col = viridis(50, option = "viridis"))
 dev.off()
+
+# ADD THIS LINE:
+plot(comm_quality, main = "Communication Quality Index\n(1 = quiet, 0 = too noisy)",
+     col = viridis(50, option = "viridis"))
 ```
 
 ### Communication Range Map
@@ -214,6 +221,10 @@ png("figures/04_communication_range.png", width = 8, height = 6, units = "in", r
 plot(comm_range_capped, main = paste("Communication Range for", species_name, "(meters)"),
      col = viridis(50, option = "cividis"))
 dev.off()
+
+# ADD THIS LINE:
+plot(comm_range_capped, main = paste("Communication Range for", species_name, "(meters)"),
+     col = viridis(50, option = "cividis"))
 ```
 
 In quiet forest, frogs can be heard up to \~100–200m away. Near highways, communication range drops to near zero — effectively silencing the population even if habitat is otherwise suitable.
@@ -257,6 +268,10 @@ png("figures/05_habitat_suitability.png", width = 8, height = 6, units = "in", r
 plot(habitat_suit, main = "Habitat Suitability for H. versicolor",
      col = viridis::viridis(50, option = "mako"))
 dev.off()
+
+# ADD THIS LINE:
+plot(habitat_suit, main = "Habitat Suitability for H. versicolor",
+     col = viridis::viridis(50, option = "mako"))
 ```
 
 ## Acoustic Refugia Index
@@ -287,10 +302,17 @@ writeRaster(acoustic_refugia_norm, "output/acoustic_refugia_index.tif",
 png("figures/06_acoustic_refugia.png", width = 8, height = 6, units = "in", res = 300)
 
 
+#plot and save
+png("figures/06_acoustic_refugia.png", width = 8, height = 6, units = "in", res = 300)
 plot(acoustic_refugia_norm,
      main = "Acoustic Refugia Index\n(high = suitable habitat + low noise)",
      col = viridis::viridis(50, option = "viridis"))
 dev.off()
+
+# ADD THIS LINE:
+plot(acoustic_refugia_norm,
+     main = "Acoustic Refugia Index\n(high = suitable habitat + low noise)",
+     col = viridis::viridis(50, option = "viridis"))
 ```
 
 ## Species Occurrence Data
@@ -417,7 +439,9 @@ main_map <- tm_shape(acoustic_refugia_norm) +
 
 tmap_save(main_map, "figures/07_acoustic_refugia_final_map.png",
           width = 10, height = 8, dpi = 300)
-print(main_map)
+
+
+main_map
 ```
 
 Here, the white dots signify the species occurrence reports from citizen science data for the area if this study.
@@ -568,6 +592,7 @@ varImpPlot(rf_model,
            pch = 19, col = "#2166AC")
 dev.off()
 
+# ADD THIS LINE:
 varImpPlot(rf_model,
            main = "What Predicts Frog Occurrence?",
            pch = 19, col = "#2166AC")
@@ -632,9 +657,11 @@ rf_map <- tm_shape(rf_presence_prob) +
   tm_compass(position = c("left", "top"), size = 1.5) +
 tm_scalebar(position = c("left", "bottom"))
 
-print(rf_map)
 tmap_save(rf_map, "figures/10_rf_prediction_map.png",
           width = 10, height = 8, dpi = 300)
+
+# ADD THIS LINE:
+rf_map
 ```
 
 ### Model Comparison
